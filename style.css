@@ -1,1 +1,15 @@
 /* CSS style for BusMall */
+
+body {
+  /*border: 2px dotted #000;*/
+
+}
+
+  table {
+    margin: 0 auto;
+    border: 1px solid #000;
+  }
+  td {
+    border: 1px solid #c82d12;
+    /*padding: 0 15px;*/
+  }
