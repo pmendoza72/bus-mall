@@ -1,5 +1,6 @@
 // Array of images
 var productsArray = [];
+var threeImages = [];
 var productImageNames = ['bag', 'banana', 'bathroom', 'boots', 'breakfast', 'bubblegum', 'chair', 'cthulhu', 'dog_duck', 'dragon', 'pen', 'pet_sweep', 'scissors', 'shark', 'sweep', 'tauntaun', 'unicorn', 'usb', 'water_can', 'wine_glass'];
 
 // 3 Random Images
@@ -24,6 +25,8 @@ function drawPictures() {
 
     newEl.appendChild(elem);
     document.getElementById('picture').appendChild(newEl).appendChild(elem);
+
+    threeImages.push(randProduct);
 
   }
 }
