@@ -1,6 +1,5 @@
 // Array of images
 var productsArray = [];
-var threeImages = [];
 var productImageNames = ['bag', 'banana', 'bathroom', 'boots', 'breakfast', 'bubblegum', 'chair', 'cthulhu', 'dog_duck', 'dragon', 'pen', 'pet_sweep', 'scissors', 'shark', 'sweep', 'tauntaun', 'unicorn', 'usb', 'water_can', 'wine_glass'];
 
 function Products(name, path) {
@@ -25,12 +24,6 @@ var tracker = {
   newImgOne: document.getElementById('img1'),
   newImgTwo: document.getElementById('img2'),
   newImgThree: document.getElementById('img3'),
-  // tdOneEl: document.getElementById('td1'),
-  // newImgOne: document.createElement('img1'),
-  // tdTwoEl: document.getElementById('td2'),
-  // newImgTwo: document.createElement('img2'),
-  // tdThreeEl: document.getElementById('td3'),
-  // newImgThree: document.createElement('img3'),
   showResultsEl: document.getElementById('show-results'),
   resultsEl: document.getElementById('results'),
   imageContainerEl: document.getElementById('image-container'),

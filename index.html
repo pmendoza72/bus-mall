@@ -2,28 +2,30 @@
 <html>
 <head>
   <title>BusMall</title>
+  <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <header>
-    <h1>Bus Mall</h1>
+    <div>BuS<br />Mall</div>
+    <p>Free Copy - Yours To Keep</p>
   </header>
-  <section>
-    <table>
-      <tr id="image-container">
-        <td><img id="img1"></td>
-        <td><img id="img2"></td>
-        <td><img id="img3"></td>
-      </tr>
-    </table>
-  </section>
-  <section>
-    <button type="button" id="show-results">show results</button>
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Harum, aut, deserunt fugit, atque facilis laudantium autem ipsam ut voluptates cumque nulla illum error eveniet reprehenderit asperiores alias possimus magni maiores.</p>
-  </section>
-  <section>
-    <p id="results"></p>
-  </section>
+  <main>
+    <section>
+      <h3 class="bottom">Choose a product that you would most likely purchase.</h3>
+      <table>
+        <tr id="image-container">
+          <td><img id="img1"></td>
+          <td><img id="img2"></td>
+          <td><img id="img3"></td>
+        </tr>
+        <tr><td><button type="button" id="show-results">Show Results</button></td></tr>
+      </table>
+    </section>
+    <section class="bottom">
+      <p id="results"></p>
+    </section>
+  </main>
   <script src="app.js"></script>
 </body>
 </html>

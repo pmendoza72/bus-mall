@@ -1,15 +1,86 @@
 /* CSS style for BusMall */
+/* @import url("reset.css"); */
 
 body {
   /*border: 2px dotted #000;*/
 
+  background: linear-gradient( rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.4) ), url('water-background.jpg');
+  /*background: url('water-background.jpg');*/
+  font-family: 'Lato', sans-serif;
+  margin: 0 auto;
+  max-width: 960px;
+  /*border: 1px solid #197c25;*/
 }
 
-  table {
-    margin: 0 auto;
-    border: 1px solid #000;
-  }
-  td {
-    border: 1px solid #c82d12;
-    /*padding: 0 15px;*/
-  }
+header {
+  /*text-align: center;*/
+  /*border: 1px solid #3f3988;*/
+  color: #000;
+  font-size: 22px;
+  background-color: #fff;
+  padding: 20px 20px 5px 20px;
+  margin-bottom: 30px;
+}
+
+header div {
+  color: #fff;
+  font-size: 52px;
+  /*border: 2px solid #000;*/
+  height: 150px;
+  width: 150px;
+  background-color: #b01427;
+}
+
+main {
+  background-color: #fff;
+  padding: 20px 0;
+}
+
+section {
+  /*border: 2px dotted #1b6a9c;*/
+  background-color: #fff;
+}
+
+h1 {
+  font-size: 40px;
+}
+
+table {
+  border-spacing: 0;
+  margin: 20px auto;
+  /*border: 1px solid #000;*/
+}
+
+table img {
+  border: 2px solid #000;
+}
+
+td {
+  /*border: 1px solid #c82d12;*/
+}
+
+ul {
+  list-style: none;
+  padding-left: 20px;
+}
+
+button {
+  background-color: #4CAF50; /* Green */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  font-weight: bold;
+  margin: 5px 0;
+}
+
+button:hover {
+  background-color: #000;
+}
+
+.bottom {
+  padding-left: 20px;
+}
