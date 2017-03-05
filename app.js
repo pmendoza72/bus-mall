@@ -6,8 +6,8 @@ var productImageNames = ['bag', 'banana', 'bathroom', 'boots', 'breakfast', 'bub
 function Products(name, path) {
   this.name = name;
   this.path = path;
-  this.shown = 0;
-  this.clicks = 0;
+  this.votes = 0;
+  productsArray.push(this);
 }
 
 // creates ALL the product images
@@ -22,18 +22,22 @@ function Products(name, path) {
 // Tracker object that controls functionality
 
 var tracker = {
-  tdOneEl: document.getElementById('td1'),
-  newImgOne: document.createElement('img1'),
-  tdTwoEl: document.getElementById('td2'),
-  newImgTwo: document.createElement('img2'),
-  tdThreeEl: document.getElementById('td3'),
-  newImgThree: document.createElement('img3'),
+  newImgOne: document.getElementById('img1'),
+  newImgTwo: document.getElementById('img2'),
+  newImgThree: document.getElementById('img3'),
+  // tdOneEl: document.getElementById('td1'),
+  // newImgOne: document.createElement('img1'),
+  // tdTwoEl: document.getElementById('td2'),
+  // newImgTwo: document.createElement('img2'),
+  // tdThreeEl: document.getElementById('td3'),
+  // newImgThree: document.createElement('img3'),
   showResultsEl: document.getElementById('show-results'),
   resultsEl: document.getElementById('results'),
+  imageContainerEl: document.getElementById('image-container'),
   imgObjOne: null,
   imgObjTwo: null,
   imgObjThree: null,
-  clicks: 0,
+  clicks: 1,
 
   // Gets random index
 
@@ -60,11 +64,11 @@ var tracker = {
 
   checkClicks: function() {
     console.log(this.clicks);
-    if(this.clicks > 15) {
+    if(this.clicks > 14) {
       this.imageContainerEl.removeEventListener('click', this.clickHandler);
       this.showResultsEl.addEventListener('click', function(e) {
         e.preventDefault();
-        tracker.renderResults();
+        tracker.getResults();
       });
     }
   },
@@ -78,58 +82,35 @@ var tracker = {
     ) {
 
       tracker.clicks++;
-      tracker.tallyVotes(e.target.id);
+      tracker.addVotes(e.target.id);
       tracker.displayImages();
     }
   },
 
+  addVotes: function(elId) {
+    for(var i in productsArray) {
+      if(elId === productsArray[i].name) {
+        productsArray[i].votes +=1;
+        return;
+      }
+    }
+  },
 
+  getResults: function() {
+    var pEl = document.createElement('h2');
+    pEl.textContent = 'Vote Results';
+    var ulEl = document.createElement('ul');
 
-}
+    for(var i in productsArray) {
+      var liEl = document.createElement('li');
+      liEl.textContent = productsArray[i].name + ': ' + productsArray[i].votes;
+      ulEl.appendChild(liEl);
+    }
+    this.resultsEl.appendChild(pEl);
+    this.resultsEl.appendChild(ulEl);
+  }
 
+};
 
-//
-// function drawPictures() {
-//   for (var i = 0; i < 3; i++) {
-//     var newEl = document.createElement('td');
-//     var elem = document.createElement('img');
-//
-//     var randIndex = randomImage();
-//     console.log('random index: ', randIndex);
-//
-//     var randProduct = productsArray[randIndex];
-//     console.log('random product: ', randProduct);
-//
-//     elem.src = randProduct.path;
-//     console.log('random path: ', elem.src);
-//
-//     newEl.appendChild(elem);
-//     document.getElementById('picture').appendChild(newEl).appendChild(elem);
-//
-//     threeImages.push(randProduct);
-//
-//   }
-// }
-
-
-
-
-
-//
-// // a simple IIFE to build all the product images
-// (function() {
-//   // build the objects
-// })()
-//
-// // Object Literal for managing functionality
-// // of app
-//
-// var tracker = {
-//   // lots of properties and methods
-// }
-//
-// someEl.addEventListener('click', function(e) {
-//   // does some stuff on click
-// })
-
-drawPictures();
+tracker.imageContainerEl.addEventListener('click', tracker.clickHandler);
+tracker.displayImages();
