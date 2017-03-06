@@ -1,20 +1,59 @@
 // Array of images
 var productsArray = [];
 var productImageNames = ['bag', 'banana', 'bathroom', 'boots', 'breakfast', 'bubblegum', 'chair', 'cthulhu', 'dog_duck', 'dragon', 'pen', 'pet_sweep', 'scissors', 'shark', 'sweep', 'tauntaun', 'unicorn', 'usb', 'water_can', 'wine_glass'];
+var productColors = function() {
+  var hexColor = '#' + Math.floor(Math.random()*16777215).toString(16);
+  return hexColor;
+};
 document.getElementById('show-results').style.visibility='hidden';
 
-function Products(name, path) {
+
+
+// myChart.data.datasets[0].data => will get you the data array
+var chartData = {
+  type: 'bar',
+  data: {
+    labels: productImageNames, // This will hold the name of each product image
+    datasets: [{
+      label: '# of Votes',
+      data: [], // This will hold the votes for each product image
+      backgroundColor: [],
+      borderColor: '#e00412',
+      borderWidth: 1
+    }]
+  },
+  options: {
+    scales: {
+      yAxes: [{
+        ticks: {
+          beginAtZero:true,
+          fontColor: '#fff'
+        }
+      }],
+      xAxes: [{
+        ticks: {
+          fontColor: '#fff'
+        },
+      }]
+    }
+  }
+};
+
+function Products(name, path, color) {
   this.name = name;
   this.path = path;
+  this.color = color;
   this.votes = 0;
   productsArray.push(this);
+  chartData.data.datasets[0].data.push(this.votes);
+  chartData.data.datasets[0].backgroundColor.push(this.color);
 }
 
 // creates ALL the product images
 
 (function() {
   for (var i = 0; i < productImageNames.length; i++) {
-    new Products(productImageNames[i], 'img/' + productImageNames[i] + '.jpg');
+    new Products(productImageNames[i], 'img/' + productImageNames[i] + '.jpg', productColors());
   }
 })();
 
@@ -88,7 +127,8 @@ var tracker = {
     for(var i in productsArray) {
       if(elId === productsArray[i].name) {
         productsArray[i].votes +=1;
-        return;
+        myChart.data.datasets[0].data[i]++;
+        myChart.update();
       }
     }
   },
@@ -118,5 +158,13 @@ var tracker = {
 
 };
 
+var ctx = document.getElementById('myChart').getContext('2d');
+
+var myChart = new Chart(ctx, chartData);
+
 tracker.imageContainerEl.addEventListener('click', tracker.clickHandler);
 tracker.displayImages();
+
+var changeChart = document.getElementById("myChart").style.width = "100%";
+var changeChart = document.getElementById("myChart").style.color = "#fff";
+var render = changeChart.getContext('2d');
