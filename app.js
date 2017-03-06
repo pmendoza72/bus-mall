@@ -65,6 +65,7 @@ var tracker = {
       this.showResultsEl.addEventListener('click', function(e) {
         e.preventDefault();
         tracker.getResults();
+        tracker.changeBgColor();
       });
     }
   },
@@ -92,9 +93,13 @@ var tracker = {
     }
   },
 
+  changeBgColor: function() {
+    document.getElementById('aside-bg').style.background = '#f8facf';
+  },
+
   getResults: function() {
-    var pEl = document.createElement('h2');
-    pEl.textContent = 'Vote Results';
+    var pEl = document.createElement('p');
+    pEl.textContent = 'Results';
     var ulEl = document.createElement('ul');
 
     for(var i in productsArray) {
