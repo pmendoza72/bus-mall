@@ -12,19 +12,27 @@
   </header>
   <main>
     <section>
-      <h3 class="bottom">Choose a product that you would most likely purchase.</h3>
+
       <table>
+        <tr>
+          <td colspan="3"><h3>Click on a product that you would most likely purchase.</h3></td>
+        </tr>
         <tr id="image-container">
           <td><img id="img1"></td>
           <td><img id="img2"></td>
           <td><img id="img3"></td>
         </tr>
-        <tr><td><button type="button" id="show-results">Show Results</button></td></tr>
+        <tr>
+          <td><button type="button" id="show-results">Show Vote Results</button></td>
+        </tr>
+        <tr>
+          <td colspan="3">
+            <p id="results"></p>
+          </td>
+        </tr>
       </table>
     </section>
-    <section class="bottom">
-      <p id="results"></p>
-    </section>
+
   </main>
   <script src="app.js"></script>
 </body>

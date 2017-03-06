@@ -1,6 +1,7 @@
 // Array of images
 var productsArray = [];
 var productImageNames = ['bag', 'banana', 'bathroom', 'boots', 'breakfast', 'bubblegum', 'chair', 'cthulhu', 'dog_duck', 'dragon', 'pen', 'pet_sweep', 'scissors', 'shark', 'sweep', 'tauntaun', 'unicorn', 'usb', 'water_can', 'wine_glass'];
+document.getElementById('show-results').style.visibility='hidden';
 
 function Products(name, path) {
   this.name = name;
@@ -56,8 +57,10 @@ var tracker = {
   },
 
   checkClicks: function() {
+
     console.log(this.clicks);
     if(this.clicks > 14) {
+      document.getElementById('show-results').style.visibility='visible';
       this.imageContainerEl.removeEventListener('click', this.clickHandler);
       this.showResultsEl.addEventListener('click', function(e) {
         e.preventDefault();
@@ -96,7 +99,12 @@ var tracker = {
 
     for(var i in productsArray) {
       var liEl = document.createElement('li');
-      liEl.textContent = productsArray[i].name + ': ' + productsArray[i].votes;
+      if(productsArray[i].votes > 1 || productsArray[i].votes === 0) {
+        liEl.textContent = productsArray[i].name + ': ' + productsArray[i].votes + ' votes';
+      } else {
+        liEl.textContent = productsArray[i].name + ': ' + productsArray[i].votes + ' vote';
+      }
+
       ulEl.appendChild(liEl);
     }
     this.resultsEl.appendChild(pEl);
